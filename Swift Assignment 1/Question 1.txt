@@ -1,0 +1,54 @@
+class Products {
+	var name: String
+	var price: Double
+	var quantity: Int
+	var type: String
+	
+	init(_ name: String,_ price: Double,_ quantity: Int,_ type: String){
+		self.name = name
+		self.price = price
+		self.quantity = quantity
+		self.type = type
+	}
+	
+	func printProduct() -> Void {
+		print("\(self.name), \(self.price), \(self.quantity), \(self.type)")
+	}
+	
+}
+
+//Initialize product list
+var productList: [Products] = []
+
+//Adding products
+productList.append(Products("Lettuce",10.5,50,"Leafy Green"))
+productList.append(Products("Cabbage",20,100,"Cruciferous"))
+productList.append(Products("Pumpkin",30,30,"Marrow"))
+productList.append(Products("Cauliflower",10,25,"Cruciferous"))
+productList.append(Products("Zucchini",20.5,50,"Marrow"))
+productList.append(Products("Yam",30,50,"Root"))
+productList.append(Products("Spinach",10,100,"Leafy Green"))
+productList.append(Products("Broccoli",20.2,75,"Cruciferous"))
+productList.append(Products("Garlic",30,20,"Leafy Green"))
+productList.append(Products("Silverbeet",10,50,"Marrow"))
+
+print("Question 1: \n \r")
+
+//Total products
+print("Total products: \(productList.count) \n \r")
+
+//Adding potato and printing total products
+productList.append(Products("Potato",10,50,"Root"))
+print("All Products:")
+for product in productList { product.printProduct() }
+print(" ")
+print("Total Products after adding potato: \(productList.count) \n \r")
+
+//Products having type as Leafy Green
+print("Products having type as leafy green:")
+var leafyType = productList.filter { $0.type.lowercased() == "leafy green" }
+for product in leafyType { product.printProduct() }
+
+
+
+

@@ -1,0 +1,81 @@
+//Declaring Protocol
+protocol Employee {
+	var id: String { get set }
+	var name: String { get set }
+	var designation: String { get set }
+	var experience: Int { get set }
+	var annualSalary: Double { get set }
+	var joiningDate: String { get set }
+	
+	init(id: String, name: String, experience: Int, joiningDate: String)
+	
+	func calculateAnnualSalary(basicSalary: Double) -> Double 
+	
+	func printEmployee() -> Void
+}
+
+//HR Class
+class HR: Employee {
+	var id: String
+	var name: String
+	var designation: String = "HR"
+	var experience: Int
+	var annualSalary: Double = 0
+	var joiningDate: String
+	
+	required init(id: String, name: String, experience: Int, joiningDate: String){
+		self.id = id
+		self.name = name
+		self.experience = experience
+		self.joiningDate = joiningDate
+	}
+	
+	func calculateAnnualSalary(basicSalary: Double) -> Double {
+		return basicSalary + (1000 * Double(self.experience))
+	}
+	
+	func printEmployee() -> Void {
+		print("\(self.id), \(self.name), \(self.designation), \(self.experience), \(self.annualSalary), \(self.joiningDate)")
+	}
+}
+
+//Developer Class
+class Developer: Employee {
+	var id: String
+	var name: String
+	var designation: String = "Developer"
+	var experience: Int
+	var annualSalary: Double = 0
+	var joiningDate: String
+	
+	required init(id: String, name: String, experience: Int, joiningDate: String){
+		self.id = id
+		self.name = name
+		self.experience = experience
+		self.joiningDate = joiningDate
+	}
+	
+	func calculateAnnualSalary(basicSalary: Double) -> Double {
+		return basicSalary + (2000 * Double(self.experience))
+	}
+	
+	func printEmployee() -> Void {
+		print("\(self.id), \(self.name), \(self.designation), \(self.experience), \(self.annualSalary), \(self.joiningDate)")
+	}
+}
+
+print("Question 3: \n \r")
+
+//Creating HR instance
+print("HR:")
+var hr = HR(id: "E001", name: "Frank Castle", experience: 4, joiningDate: "16/02/2014")
+hr.annualSalary = hr.calculateAnnualSalary(basicSalary: 8000)
+hr.printEmployee()
+
+//Creating Developer instance
+print(" ")
+print("Developer:")
+var dev = Developer(id: "E002", name: "Raymond Reddington", experience: 5, joiningDate: "16/02/2013")
+dev.annualSalary = dev.calculateAnnualSalary(basicSalary: 8000)
+dev.printEmployee()
+

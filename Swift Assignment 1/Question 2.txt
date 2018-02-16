@@ -1,0 +1,40 @@
+class PrimeMinister {
+	var name: String
+	var year: Int
+	
+	init(_ name: String, _ year: Int){
+		self.name = name
+		self.year = year
+	}
+	
+	func printPrimeMinister() -> Void {
+		print("\(self.name), \(self.year)")
+	}
+}
+
+print("Question 2: \n \r")
+
+//Initialize dictionary 
+var pm: [String: PrimeMinister] = [:] 
+
+pm["ABV1998"] = PrimeMinister("Atal Bihari Vajpayee",1998)
+pm["NM2014"] = PrimeMinister("Narendra Modi",2014)
+pm["MS2004"] = PrimeMinister("Manmohan Singh",2004)
+
+//PM of 2004
+print("PM of 2004:")
+var findPm = pm.filter { $0.value.year == 2004 }
+findPm[0].value.printPrimeMinister()
+
+//Add current prime minister
+print(" ")
+print("Dicitionary after adding current PM:")
+pm["NM2018"] = PrimeMinister("Narendra Modi",2018)
+for p in pm.values { p.printPrimeMinister() }
+
+// Sorting a dictionary by year
+let sortedDictionary = pm.sorted { $0.value.year < $1.value.year }
+print(" ")
+print("Sorted Dictionary by year:")
+for pm in sortedDictionary { pm.value.printPrimeMinister() }
+
